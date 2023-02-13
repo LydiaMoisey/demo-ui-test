@@ -28,4 +28,19 @@ public class AmazonTest {
         Assert.assertEquals(EMPTY_CART_Element.getText(), "Your Amazon Cart is empty");
         driver.quit();
     }
+    @Test
+    public void testOpenAmazonLoginForm() {
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.get(AmazonPage.URL);
+
+        WebElement CART_Element = driver.findElement(By.xpath(AmazonPage.CART));
+        CART_Element.click();
+
+        WebElement BTN_LOGIN_Element = driver.findElement(By.xpath(AmazonPage.BTN_LOGIN));
+        BTN_LOGIN_Element.click();
+        WebElement FORM_TITLE_Element = driver.findElement(By.xpath(AmazonPage.FORM_TITLE));
+        Assert.assertEquals(FORM_TITLE_Element.getText(), "Sign in");
+        driver.quit();
+    }
 }
