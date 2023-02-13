@@ -36,11 +36,26 @@ public class AmazonTest {
 
         WebElement CART_Element = driver.findElement(By.xpath(AmazonPage.CART));
         CART_Element.click();
-
         WebElement BTN_LOGIN_Element = driver.findElement(By.xpath(AmazonPage.BTN_LOGIN));
         BTN_LOGIN_Element.click();
         WebElement FORM_TITLE_Element = driver.findElement(By.xpath(AmazonPage.FORM_TITLE));
         Assert.assertEquals(FORM_TITLE_Element.getText(), "Sign in");
+        driver.quit();
+    }
+    @Test
+    public void testAmazonLoginFormWithEmptyCredentials() {
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.get(AmazonPage.URL);
+
+        WebElement CART_Element = driver.findElement(By.xpath(AmazonPage.CART));
+        CART_Element.click();
+        WebElement BTN_LOGIN_Element = driver.findElement(By.xpath(AmazonPage.BTN_LOGIN));
+        BTN_LOGIN_Element.click();
+        WebElement BTN_LOGIN_CONTINUE_Element = driver.findElement(By.xpath(AmazonPage.BTN_CONTINUE));
+        BTN_LOGIN_CONTINUE_Element.click();
+        Assert.assertEquals(driver.findElement(By.xpath("//*[@id='auth-email-missing-alert']")).getText(),
+                "Enter your email or mobile phone number");
         driver.quit();
     }
 }
