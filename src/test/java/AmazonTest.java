@@ -13,7 +13,7 @@ public class AmazonTest {
         driver.get(AmazonPage.URL);
 
         WebElement COPYRIGHT_Element = driver.findElement(By.xpath(AmazonPage.COPYRIGHT));
-        Assert.assertEquals(COPYRIGHT_Element.getText(), "© 1996-2023, Amazon.com, Inc. or its affiliates");
+        Assert.assertEquals("© 1996-2023, Amazon.com, Inc. or its affiliates", COPYRIGHT_Element.getText());
         driver.quit();
     }
     @Test
@@ -25,7 +25,7 @@ public class AmazonTest {
         WebElement CART_Element = driver.findElement(By.xpath(AmazonPage.CART));
         CART_Element.click();
         WebElement EMPTY_CART_Element = driver.findElement(By.xpath(AmazonPage.EMPTY_CART));
-        Assert.assertEquals(EMPTY_CART_Element.getText(), "Your Amazon Cart is empty");
+        Assert.assertEquals("Your Amazon Cart is empty", EMPTY_CART_Element.getText());
         driver.quit();
     }
     @Test
@@ -39,7 +39,7 @@ public class AmazonTest {
         WebElement BTN_LOGIN_Element = driver.findElement(By.xpath(AmazonPage.BTN_LOGIN));
         BTN_LOGIN_Element.click();
         WebElement FORM_TITLE_Element = driver.findElement(By.xpath(AmazonPage.FORM_TITLE));
-        Assert.assertEquals(FORM_TITLE_Element.getText(), "Sign in");
+        Assert.assertEquals("Sign in", FORM_TITLE_Element.getText());
         driver.quit();
     }
     @Test
@@ -54,8 +54,8 @@ public class AmazonTest {
         BTN_LOGIN_Element.click();
         WebElement BTN_LOGIN_CONTINUE_Element = driver.findElement(By.xpath(AmazonPage.BTN_CONTINUE));
         BTN_LOGIN_CONTINUE_Element.click();
-        Assert.assertEquals(driver.findElement(By.xpath("//*[@id='auth-email-missing-alert']")).getText(),
-                "Enter your email or mobile phone number");
+        Assert.assertEquals("Enter your email or mobile phone number",
+                driver.findElement(By.xpath("//*[@id='auth-email-missing-alert']")).getText());
         driver.quit();
     }
 }

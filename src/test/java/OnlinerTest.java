@@ -14,7 +14,7 @@ public class OnlinerTest {
         driver.get(OnlinerPage.URL);
 
         WebElement COPYRIGHT_Element = driver.findElement(By.xpath(OnlinerPage.COPYRIGHT));
-        Assert.assertEquals(COPYRIGHT_Element.getText(), "© 2001—2023 Onlíner");
+        Assert.assertEquals("© 2001—2023 Onlíner", COPYRIGHT_Element.getText());
         driver.quit();
     }
 
@@ -27,7 +27,7 @@ public class OnlinerTest {
         WebElement BTN_ENTER_Element = driver.findElement(By.xpath(OnlinerPage.BTN_ENTER));
         BTN_ENTER_Element.click();
         WebElement FORM_TITLE_Element = driver.findElement(By.xpath(OnlinerPage.FORM_TITLE));
-        Assert.assertEquals(FORM_TITLE_Element.getText(), "Вход");
+        Assert.assertEquals( "Вход", FORM_TITLE_Element.getText());
         driver.quit();
     }
 
@@ -39,13 +39,13 @@ public class OnlinerTest {
 
         WebElement BTN_ENTER_Element = driver.findElement(By.xpath(OnlinerPage.BTN_ENTER));
         BTN_ENTER_Element.click();
-        WebElement BTN_SUBMIT = driver.findElement(By.xpath("//div[@id='auth-container']//button[@type='submit']"));
-        BTN_SUBMIT.click();
+        WebElement BTN_SUBMIT_Element = driver.findElement(By.xpath(OnlinerPage.BTN_SUBMIT));
+        BTN_SUBMIT_Element.click();
         //тут падает тест
         WebElement nickname = driver.findElement(By.xpath("//*[@id='auth-container']/div/div[2]/div/form/div[1]/div/div[2]/div/div"));
-        Assert.assertEquals(nickname.getText(), "Укажите ник или e-mail");
-        WebElement password = driver.findElement(By.xpath("//*[@id=\"auth-container\"]/div/div[2]/div/form/div[2]/div/div"));
-        Assert.assertEquals(password.getText(), "Укажите пароль");
+        Assert.assertEquals("Укажите ник или e-mail", nickname.getText());
+        WebElement password = driver.findElement(By.xpath("//*[@id='auth-container']/div/div[2]/div/form/div[2]/div/div"));
+        Assert.assertEquals("Укажите пароль", password.getText());
         driver.quit();
     }
 
@@ -57,13 +57,12 @@ public class OnlinerTest {
 
         WebElement BTN_ENTER_Element = driver.findElement(By.xpath(OnlinerPage.BTN_ENTER));
         BTN_ENTER_Element.click();
-        WebElement LOGIN_NAME = driver.findElement(By.xpath("//input[@placeholder=\"Ник или e-mail\"]"));
+        WebElement LOGIN_NAME = driver.findElement(By.xpath(OnlinerPage.INPUT_LOGIN));
         LOGIN_NAME.sendKeys("test@test.com");
-        WebElement BTN_SUBMIT = driver.findElement(By.xpath("//div[@id='auth-container']//button[@type='submit']"));
-        BTN_SUBMIT.click();
+        WebElement BTN_SUBMIT_Element = driver.findElement(By.xpath(OnlinerPage.BTN_SUBMIT));
+        BTN_SUBMIT_Element.click();
         WebElement password = driver.findElement(By.xpath("//*[@id=\"auth-container\"]/div/div[2]/div/form/div[2]/div/div"));
-        Assert.assertEquals(password.getText(), "Укажите пароль");
-
+        Assert.assertEquals("Укажите пароль", password.getText());
         driver.quit();
     }
 }
